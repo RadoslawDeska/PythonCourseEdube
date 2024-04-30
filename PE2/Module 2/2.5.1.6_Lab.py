@@ -47,3 +47,46 @@ Sample output:
 Sgd chd hr bzrs
 '''
 
+# Caesar cipher.
+text = ''
+while not text:
+    text = input("Enter your message: ")
+    if not text:
+        print('Empty message')
+
+shift = ''
+while not shift:
+    shift = input("Specify the shift (1-25): ")
+    if not shift or not shift.isdigit():
+        print('Enter number')
+        shift = ''
+        continue
+    else:
+        try:
+            shift = int(round(float(shift))) # change string to float and then to integer
+            if shift not in range(1,26):
+                raise ValueError
+        except ValueError:
+            print("Number out of range")
+            continue
+        else:
+            cipher = ''
+            if text:
+                for char in text:
+                    if not char.isalpha():
+                        cipher += char
+                    else:
+                        # check if capital or small
+                        if ord(char) in range(ord('A'),ord('Z')+1):
+                            code = ord(char) + shift
+                            if code > ord('Z'):
+                                code = ord('A') + (code-ord('Z')) - 1
+                        else:
+                            code = ord(char) + shift
+                            if code > ord('z'):
+                                code = ord('a') + (code-ord('z')) - 1
+                            
+                        cipher += chr(code)
+
+                print(cipher)
+
