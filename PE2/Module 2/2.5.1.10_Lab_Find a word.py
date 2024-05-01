@@ -47,3 +47,16 @@ Sample output:
 No
 '''
 
+text1 = input("First string: ")
+text2 = input("Second string: ")
+
+j=0
+for i in range(len(text1)):
+    j = text2.upper().find(text1[i].upper(),j)
+    if j != -1:
+        continue
+    else:
+        print('No')
+        break
+if j != -1:
+    print('Yes')
