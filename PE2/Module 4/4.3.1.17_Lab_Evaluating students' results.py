@@ -32,7 +32,7 @@ Your task is to write a program which:
     prints a simple (but sorted) report, just like this one:
 
 Andrew Cox 	 1.5
-Anna Boleyn 	 15.5
+Anna Boleyn 15.5
 John Smith 	 7.0
 
 output
