@@ -71,7 +71,7 @@ try:
     f = open(os.path.join(directory,input_fname), mode="r",encoding="utf-8")  # possible failure: file not found or access denied
     if not f.read(1):
         raise FileEmpty
-    f.seek(0)  # come back to the first line
+    f.seek(0)  # come back to the file initial position
     
     for i, line in enumerate(f.readlines()):
         data = line.split()
@@ -87,7 +87,7 @@ try:
             d[key] += float(score)  # if `score` is not convertible to float, raises ValueError
         else:
             d[key] = float(score)  # if `score` is not convertible to float, raises ValueError
-        
+    
     d_sorted = dict(sorted(d.items(), key=sorting_key(0), reverse=False))
 
     for k,v in d_sorted.items():
