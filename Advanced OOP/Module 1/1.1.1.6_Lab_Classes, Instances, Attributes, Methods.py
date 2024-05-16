@@ -33,3 +33,25 @@ mobile phone is turned off
 mobile phone is turned off
 '''
 
+class MobilePhone:
+    def __init__(self, number):
+        self.number = number
+    
+    def turn_on(self):
+        return f"mobile phone {self.number} is turned on"
+    
+    def turn_off(self):
+        return "mobile phone is turned off"
+    
+    def call(self, number):
+        return f"calling {number}"
+    
+m1 = MobilePhone("123-234")
+m2 = MobilePhone("234-123")
+
+print(m1.turn_on())
+print(m2.turn_on())
+print(m1.call(m2.number))
+print(m1.turn_off())
+print(m2.turn_off())
+
