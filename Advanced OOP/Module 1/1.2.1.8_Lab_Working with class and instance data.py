@@ -27,3 +27,25 @@ Hint: Use a random.uniform(lower, upper) function to create a random number betw
 
 '''
 
+import random
+
+class Apple:
+    number = 0
+    
+    def __init__(self):
+        self.weight = random.uniform(0.2, 0.5)
+        Apple.number += 1
+
+number_limit = 1000  # 852 is the number of apples at which you can easily get both results quite often.
+weight_limit = 300
+precision = 2  # decimal precision
+
+apples_weight = 0
+for i in range(number_limit):
+    apple = Apple()
+    if round(apples_weight + apple.weight, precision) > weight_limit:
+        print(f"Weight limit reached. Packed {Apple.number-1} apples of total weight {round(apples_weight, precision)}.")
+        exit()
+    apples_weight += apple.weight
+    
+print(f"Packed {Apple.number} apples of total weight {round(apples_weight, precision)}.")
