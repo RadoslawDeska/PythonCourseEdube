@@ -32,12 +32,32 @@ class Device:
 
 class Scanner:
     def scan(self):
-        return 
+        print('scan() method from Scanner class')
 
 class Printer:
     def print(self):
-        return 'print() method from Printer class'
+        print('print() method from Printer class')
 
-class Fax(Printer):
+class Fax:
     def send(self):
         print('send() method from Fax class')
+    def print(self):
+        print('print() method from Fax class')
+
+
+class MFD_SPF(Scanner, Printer, Fax):
+    pass
+
+class MFD_SFP(Scanner, Fax, Printer):
+    pass
+
+spf = MFD_SPF()
+sfp = MFD_SFP()
+
+spf.print() # Printer class is resolved before Fax, so Printer.print is used
+spf.scan()
+spf.send()
+
+sfp.print() # Fax class is resolved before Printer, so Fax.print is used
+sfp.scan()
+sfp.send()
